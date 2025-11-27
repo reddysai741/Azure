@@ -99,52 +99,7 @@ Cosmos DB.
 
 ## Architecture of task
 
-                  ┌────────────────────────────┐
-                  │    Azure Blob Storage       │
-                  │-----------------------------│
-                  │ Container: documents        │
-                  │ File: simple.txt            │
-                  └─────────────┬───────────────┘
-                                │
-                                │  (1) File URL
-                                ▼
-                 ┌──────────────────────────────┐
-                 │ Azure Function: ReadTextFromURL │
-                 │--------------------------------│
-                 │ - Downloads file using URL      │
-                 │ - Reads text content            │
-                 │ - Extracts:                     │
-                 │      • title (first line)       │
-                 │      • wordCount                │
-                 │ - Prepares JSON document        │
-                 └───────────────┬────────────────┘
-                                 │ (2) Processed Metadata JSON
-                                 ▼
-                    ┌──────────────────────────┐
-                    │ CosmosDBFunction          │
-                    │---------------------------│
-                    │ - Receives JSON           │
-                    │ - Connects using          │
-                    │   COSMOS_DB_URL & KEY     │
-                    │ - Inserts/Upserts item    │
-                    └──────────────┬────────────┘
-                                   │ (3) Inserted Document
-                                   ▼
-                     ┌──────────────────────────┐
-                     │ Azure Cosmos DB           │
-                     │---------------------------│
-                     │ Database: DocumentDB      │
-                     │ Container: Documents       │
-                     │ Stores:                    │
-                     │  {                         │
-                     │    "id": "simple.txt",     │
-                     │    "url": "...",           │
-                     │    "title": "First line",  │
-                     │    "wordCount": 42,        │
-                     │    "uploadedOn": date      │
-                     │  }                         │
-                     └────────────────────────────┘
-
+<img width="2816" height="1536" alt="Gemini_Generated_Image_q92hmqq92hmqq92h" src="https://github.com/user-attachments/assets/d01d19ad-361a-4beb-a30a-28de00dca8bf" />
  
   
   
