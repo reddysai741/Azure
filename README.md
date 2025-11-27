@@ -53,7 +53,7 @@ in Azure Cosmos DB (SQL API). Deploy locally and to Azure.
 
 # 2. Queue-driven Image Resizer (Functions + Storage Queue + Blob Storage) — Intermediate
 
- Problem statement- [GitHub Repo](https://github.com/reddysai741/Azure/tree/main)
+ Problem statement- [GitHub Repo](https://github.com/reddysai741/Azure/tree/main/question2)
 
  
 Build a system where an HTTP API accepts an image upload request, stores the uploaded image to 
@@ -82,7 +82,8 @@ uploads/.
 
 
 
-# 3. Event Grid: Auto-index Blob Metadata into Cosmos (Event Grid + Functions + Cosmos) — Intermediate
+# 3. Event Grid: Auto-index Blob Metadata into Cosmos (Event Grid + Functions + Cosmos) — Intermediate [Project Source Code](https://github.com/reddysai741/Azure/tree/main/q3)
+
 
 Problem statement 
 Whenever a blob is created in documents container, Event Grid triggers a Function that reads 
