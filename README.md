@@ -96,4 +96,5 @@ uploads/.
                         ┌───────────────────────────────┐
                         │ function-logs/ImageResizer/   │
                         └───────────────────────────────┘
+<img width="1356" height="407" alt="Screenshot 2025-11-25 172316" src="https://github.com/user-attachments/assets/29e7a9ae-135d-43ed-b7ff-2377303ef963" />
 
