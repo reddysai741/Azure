@@ -1,4 +1,4 @@
-## 1. Simple HTTP CRUD API (Azure Functions + Cosmos DB) — Beginner [GitHub Repo](https://github.com/reddysai741/Azure/tree/main)
+# 1. Simple HTTP CRUD API (Azure Functions + Cosmos DB) — Beginner [GitHub Repo](https://github.com/reddysai741/Azure/tree/main)
 
 
  Problem statement -
@@ -6,12 +6,18 @@
  
 Create a small Products CRUD API using Python Azure Functions that stores product documents 
 in Azure Cosmos DB (SQL API). Deploy locally and to Azure.
+
  Requirements / Acceptance
+ 
  • Endpoints:
  ◦ POST /api/products — create product (body includes id, name, price)
+ 
  ◦ GET /api/products — list products
+ 
  ◦ GET /api/products/{id} — retrieve product
+ 
  ◦ PUT /api/products/{id} — update product
+ 
  ◦ DELETE /api/products/{id} — delete product
 
  ### Architecture of task
@@ -45,7 +51,7 @@ in Azure Cosmos DB (SQL API). Deploy locally and to Azure.
 <img width="1350" height="172" alt="Screenshot 2025-11-25 112927" src="https://github.com/user-attachments/assets/6e044a44-7dda-4e2c-8bfd-54f00f9c391c" />
 
 
-## 2. Queue-driven Image Resizer (Functions + Storage Queue + Blob Storage) — Intermediate
+# 2. Queue-driven Image Resizer (Functions + Storage Queue + Blob Storage) — Intermediate
 
  Problem statement- [GitHub Repo](https://github.com/reddysai741/Azure/tree/main)
 
@@ -54,12 +60,16 @@ Build a system where an HTTP API accepts an image upload request, stores the upl
 Blob Storage, and enqueues a job to image-jobs queue. A Queue-triggered Function picks up 
 the job, resizes the image into two sizes, stores resized images into a different container, and logs 
 results in blob storage (JSON).
+
  Requirements / Acceptance
+ 
  • POST /api/upload (HTTP Function) accepts multipart or base64; stores original to 
 uploads/.
+ 
  • Enqueue message JSON { "blobUrl": "...", "sizes":[320, 1024] }.
- • Queue job function resizes image to each size, stores under container resized/
- <size>/....
+ 
+ • Queue job function resizes image to each size, stores under container resized/<size>/....
+ 
  • After processing, write a JSON log blob under function-logs/ImageResizer/
  <date>/...json with original URL, output URLs, processing time, status.
 
@@ -72,30 +82,44 @@ uploads/.
 
 
 
-### 3. Event Grid: Auto-index Blob Metadata into Cosmos (Event Grid + Functions + Cosmos) — Intermediate
+# 3. Event Grid: Auto-index Blob Metadata into Cosmos (Event Grid + Functions + Cosmos) — Intermediate
 
 Problem statement 
 Whenever a blob is created in documents container, Event Grid triggers a Function that reads 
 blob metadata and content, extracts a title and word-count, and indexes a document record into 
 Cosmos DB.
+
+
  Requirements / Acceptance
  • Use Event Grid trigger (Function) bound to the Storage account blob-created events.
+ 
  • For each new blob, extract:
+ 
  ◦ blobName, container, url, size, contentType
+ 
  ◦ title: first H1 (or first line) if text file
+ 
  ◦ wordCount: number of words (for text)
+ 
  • Insert a document into Cosmos DB Documents container with id=blobName.
+ 
  • Avoid duplicate inserts (id uniqueness).
+ 
  • Provide a function log and sample query for Cosmos to get largest documents.
  
  Sample Cosmos document
  {
  }
   "id": "file1.txt",
+  
   "url": "https://.../documents/file1.txt",
+  
   "size": 1234,
+  
   "title": "My Notes",
+  
   "wordCount": 345,
+  
   "uploadedOn": "2025-11-24T..."
 
 ## Architecture of task
