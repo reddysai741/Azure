@@ -42,6 +42,7 @@ in Azure Cosmos DB (SQL API). Deploy locally and to Azure.
          │  Container: Products                 │
          │  Partition Key: /id                  │
          └─────────────────────────────────────┘
+<img width="1350" height="172" alt="Screenshot 2025-11-25 112927" src="https://github.com/user-attachments/assets/6e044a44-7dda-4e2c-8bfd-54f00f9c391c" />
 
 
 ## 2. Queue-driven Image Resizer (Functions + Storage Queue + Blob Storage) — Intermediate
