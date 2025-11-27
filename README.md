@@ -51,9 +51,9 @@ in Azure Cosmos DB (SQL API). Deploy locally and to Azure.
 <img width="1350" height="172" alt="Screenshot 2025-11-25 112927" src="https://github.com/user-attachments/assets/6e044a44-7dda-4e2c-8bfd-54f00f9c391c" />
 
 
-# 2. Queue-driven Image Resizer (Functions + Storage Queue + Blob Storage) — Intermediate
+# 2. Queue-driven Image Resizer (Functions + Storage Queue + Blob Storage) — Intermediate  [GitHub Repo](https://github.com/reddysai741/Azure/tree/main/question2)
 
- Problem statement- [GitHub Repo](https://github.com/reddysai741/Azure/tree/main/question2)
+ Problem statement- 
 
  
 Build a system where an HTTP API accepts an image upload request, stores the uploaded image to 
