@@ -1,7 +1,9 @@
-## 1. Simple HTTP CRUD API (Azure Functions + Cosmos DB) — Beginner
+## 1. Simple HTTP CRUD API (Azure Functions + Cosmos DB) — Beginner [GitHub Repo](https://github.com/reddysai741/Azure/tree/main)
 
 
- Problem statement -[GitHub Repo](https://github.com/reddysai741/Azure/tree/main)
+ Problem statement -
+
+ 
 Create a small Products CRUD API using Python Azure Functions that stores product documents 
 in Azure Cosmos DB (SQL API). Deploy locally and to Azure.
  Requirements / Acceptance
@@ -43,7 +45,10 @@ in Azure Cosmos DB (SQL API). Deploy locally and to Azure.
 
 
 ## 2. Queue-driven Image Resizer (Functions + Storage Queue + Blob Storage) — Intermediate
- Problem statement [GitHub Repo](https://github.com/reddysai741/Azure/tree/main)
+
+ Problem statement- [GitHub Repo](https://github.com/reddysai741/Azure/tree/main)
+
+ 
 Build a system where an HTTP API accepts an image upload request, stores the uploaded image to 
 Blob Storage, and enqueues a job to image-jobs queue. A Queue-triggered Function picks up 
 the job, resizes the image into two sizes, stores resized images into a different container, and logs 
