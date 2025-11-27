@@ -1,5 +1,5 @@
 ## 1. Simple HTTP CRUD API (Azure Functions + Cosmos DB) — Beginner
- Problem statement 
+ Problem statement -[GitHub Repo](https://github.com/reddysai741/Azure/tree/main)
 Create a small Products CRUD API using Python Azure Functions that stores product documents 
 in Azure Cosmos DB (SQL API). Deploy locally and to Azure.
  Requirements / Acceptance
