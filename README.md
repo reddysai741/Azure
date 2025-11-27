@@ -64,45 +64,9 @@ uploads/.
 
  ## Architecture of task
 
+ <img width="2816" height="1536" alt="Gemini_Generated_Image_7o4f5e7o4f5e7o4f" src="https://github.com/user-attachments/assets/871ff23f-d559-405d-a226-28a471314396" />
 
-                             ┌───────────────┐
-                            │     Client     │
-                            └───────┬───────┘
-                                    │
-                          POST /api/upload
-                                    │
-                       ┌────────────▼────────────┐
-                       │ HTTP Upload Function     │
-                       │  - validate input         │
-                       │  - save to uploads/       │
-                       │  - enqueue resize job     │
-                       └───────┬──────────┬───────┘
-                               │          │
-                Writes Blob    │          │  Enqueue JSON
-                      ┌────────▼──┐   ┌───▼────────────┐
-                      │ uploads/  │   │ image-jobs Queue│
-                      └───────────┘   └───────┬────────┘
-                                              │
-                                      Auto-trigger by message
-                                              │
-                                    ┌─────────▼──────────┐
-                                    │ Queue-triggered     │
-                                    │ Image Resizer Func  │
-                                    │  - download image    │
-                                    │  - resize sizes      │
-                                    │  - save outputs      │
-                                    │  - write logs        │
-                                    └───────┬──────────────┘
-                       Writes resized blobs │
-                                           │
-                        ┌──────────────────▼───────────┐
-                        │ resized/<size>/               │
-                        └──────────────────────────────┘
-
-                        Writes log JSON
-                        ┌───────────────────────────────┐
-                        │ function-logs/ImageResizer/   │
-                        └───────────────────────────────┘
+                          
 <img width="1356" height="407" alt="Screenshot 2025-11-25 172316" src="https://github.com/user-attachments/assets/29e7a9ae-135d-43ed-b7ff-2377303ef963" />
 
 
