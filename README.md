@@ -1,4 +1,4 @@
-# 1. Simple HTTP CRUD API (Azure Functions + Cosmos DB) — Beginner [GitHub Repo](https://github.com/reddysai741/Azure/tree/main)
+# 1. Simple HTTP CRUD API (Azure Functions + Cosmos DB) — Beginner [GitHub Repo](https://github.com/reddysai741/Azure/tree/main/q1)
 
 
  Problem statement -
@@ -82,7 +82,7 @@ uploads/.
 
 
 
-# 3. Event Grid: Auto-index Blob Metadata into Cosmos (Event Grid + Functions + Cosmos) — Intermediate [Project Source Code](https://github.com/reddysai741/Azure/tree/main/q3)
+# 3. Event Grid: Auto-index Blob Metadata into Cosmos (Event Grid + Functions + Cosmos) — Intermediate [GitHub Repo](https://github.com/reddysai741/Azure/tree/main/q3)
 
 
 Problem statement 
