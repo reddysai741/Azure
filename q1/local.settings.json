@@ -1,0 +1,10 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "COSMOS_CONN_STRING": "AccountEndpoint=https://chiddireddypavan.documents.azure.com:443/;AccountKey=wUJ2RJSEa0DDMntWxTUjWFrjbTfEoW1eDrC43lo2TcKq3u89rD4oYwCxy8hPJHncHkJz6uCoqvvBACDbQxCpGA==;",
+    "COSMOS_DB":"ProductsDB",
+    "COSMOS_CONTAINER":"Products"
+  }
+}
