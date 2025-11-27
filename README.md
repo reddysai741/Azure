@@ -60,7 +60,9 @@ uploads/.
  • Queue job function resizes image to each size, stores under container resized/
  <size>/....
  • After processing, write a JSON log blob under function-logs/ImageResizer/
- <date>/...json with original URL, output URLs, processing time, status
+ <date>/...json with original URL, output URLs, processing time, status.
+
+ ## Architecture of task
 
 
                              ┌───────────────┐
@@ -102,4 +104,83 @@ uploads/.
                         │ function-logs/ImageResizer/   │
                         └───────────────────────────────┘
 <img width="1356" height="407" alt="Screenshot 2025-11-25 172316" src="https://github.com/user-attachments/assets/29e7a9ae-135d-43ed-b7ff-2377303ef963" />
+
+
+
+### 3. Event Grid: Auto-index Blob Metadata into Cosmos (Event Grid + Functions + Cosmos) — Intermediate
+
+Problem statement 
+Whenever a blob is created in documents container, Event Grid triggers a Function that reads 
+blob metadata and content, extracts a title and word-count, and indexes a document record into 
+Cosmos DB.
+ Requirements / Acceptance
+ • Use Event Grid trigger (Function) bound to the Storage account blob-created events.
+ • For each new blob, extract:
+ ◦ blobName, container, url, size, contentType
+ ◦ title: first H1 (or first line) if text file
+ ◦ wordCount: number of words (for text)
+ • Insert a document into Cosmos DB Documents container with id=blobName.
+ • Avoid duplicate inserts (id uniqueness).
+ • Provide a function log and sample query for Cosmos to get largest documents.
+ 
+ Sample Cosmos document
+ {
+ }
+  "id": "file1.txt",
+  "url": "https://.../documents/file1.txt",
+  "size": 1234,
+  "title": "My Notes",
+  "wordCount": 345,
+  "uploadedOn": "2025-11-24T..."
+
+## Architecture of task
+
+                  ┌────────────────────────────┐
+                  │    Azure Blob Storage       │
+                  │-----------------------------│
+                  │ Container: documents        │
+                  │ File: simple.txt            │
+                  └─────────────┬───────────────┘
+                                │
+                                │  (1) File URL
+                                ▼
+                 ┌──────────────────────────────┐
+                 │ Azure Function: ReadTextFromURL │
+                 │--------------------------------│
+                 │ - Downloads file using URL      │
+                 │ - Reads text content            │
+                 │ - Extracts:                     │
+                 │      • title (first line)       │
+                 │      • wordCount                │
+                 │ - Prepares JSON document        │
+                 └───────────────┬────────────────┘
+                                 │ (2) Processed Metadata JSON
+                                 ▼
+                    ┌──────────────────────────┐
+                    │ CosmosDBFunction          │
+                    │---------------------------│
+                    │ - Receives JSON           │
+                    │ - Connects using          │
+                    │   COSMOS_DB_URL & KEY     │
+                    │ - Inserts/Upserts item    │
+                    └──────────────┬────────────┘
+                                   │ (3) Inserted Document
+                                   ▼
+                     ┌──────────────────────────┐
+                     │ Azure Cosmos DB           │
+                     │---------------------------│
+                     │ Database: DocumentDB      │
+                     │ Container: Documents       │
+                     │ Stores:                    │
+                     │  {                         │
+                     │    "id": "simple.txt",     │
+                     │    "url": "...",           │
+                     │    "title": "First line",  │
+                     │    "wordCount": 42,        │
+                     │    "uploadedOn": date      │
+                     │  }                         │
+                     └────────────────────────────┘
+
+  <img width="897" height="242" alt="Screenshot 2025-11-26 142934" src="https://github.com/user-attachments/assets/f55c052a-49a4-47bf-9487-a76669e69208" />
+
 
