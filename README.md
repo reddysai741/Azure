@@ -136,3 +136,67 @@ Cosmos DB.
 <img width="1282" height="473" alt="Screenshot 2025-11-27 102054" src="https://github.com/user-attachments/assets/92e14ef6-7fad-43bf-aa03-8548314e028e" />
 <img width="1309" height="470" alt="Screenshot 2025-11-27 102142" src="https://github.com/user-attachments/assets/9d782b53-b24c-4872-93e7-92de89a59c6f" />
 <img width="1271" height="530" alt="Screenshot 2025-11-27 102356" src="https://github.com/user-attachments/assets/fd9af985-3828-4f59-9242-8e87b549db64" />
+
+
+# 6. Scheduled Cleanup Job (Timer Trigger + Azure SQL + Storage) — Beginner/Intermediate [GitHub Repo](https://github.com/reddysai741/Azure/tree/main/q6)
+
+Problem statement 
+
+Create a Timer-triggered Function that runs nightly and archives old records older than 30 days 
+from Azure SQL into Blob Storage as newline-delimited JSON. Delete records once archived.
+
+ Requirements / Acceptance
+ 
+ • Timer Trigger runs daily at 02:00 UTC.
+ 
+ • Query Orders table in Azure SQL for rows older than 30 days.
+ 
+ • Write a blob file archive/orders/YYYY/MM/DD/orders
+<timestamp>.ndjson with one JSON object per line.
+ 
+ • After successful write, delete those rows from the SQL table (transactional if many).
+ 
+ • Log number of archived rows and archive blob URL in Application Insights or blob logger.
+
+
+                  ┌────────────────────────────────────┐
+                 │   Timer Trigger (02:00 UTC Daily)  │
+                 └───────────────┬────────────────────┘
+                                 │
+                                 ▼
+               ┌────────────────────────────────────┐
+               │ Calculate cutoff = now - 30 days   │
+               └─────────────────┬──────────────────┘
+                                 │
+                                 ▼
+               ┌────────────────────────────────────┐
+               │ Query Azure SQL Orders in batches  │
+               │ (1000 rows per batch)             │
+               └─────────────────┬──────────────────┘
+                                 │
+                                 ▼
+       ┌────────────────────────────────────────────────────────┐
+       │  Stream record → NDJSON Blob (append line by line)     │
+       │  ALSO write ID to temp file for deletion               │
+       └────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+          ┌───────────────────────────────────────────┐
+          │ Finish Blob Upload → archive/orders/...   │
+          └────────────────────┬──────────────────────┘
+                               │
+                               ▼
+       ┌────────────────────────────────────────────────────────┐
+       │  Read IDs from temp file in batches                   │
+       │  SQL DELETE IN BATCHES inside TRANSACTION             │
+       └────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+             ┌──────────────────────────────────┐
+             │  Log details (counts + blob URL) │
+             │  Clean temp files                │
+             └──────────────────────────────────┘
+
+<img width="1194" height="513" alt="Screenshot 2025-11-26 163348" src="https://github.com/user-attachments/assets/cc5abee6-0298-425f-97ef-8e184f7982a3" />
+
+
