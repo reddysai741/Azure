@@ -181,6 +181,13 @@ Cosmos DB.
                      │  }                         │
                      └────────────────────────────┘
 
-  <img width="897" height="242" alt="Screenshot 2025-11-26 142934" src="https://github.com/user-attachments/assets/f55c052a-49a4-47bf-9487-a76669e69208" />
-
-
+ 
+  
+  
+<img width="897" height="242" alt="Screenshot 2025-11-26 142934" src="https://github.com/user-attachments/assets/b09d01b1-f8c1-4e4f-9469-886990158b6d" />
+<img width="1349" height="547" alt="Screenshot 2025-11-27 072418" src="https://github.com/user-attachments/assets/85f869cc-6042-44c2-a5d7-5f57f8c68f21" />
+<img width="1283" height="488" alt="Screenshot 2025-11-27 074034" src="https://github.com/user-attachments/assets/be605837-2b07-40cb-939a-fb63d6295852" />
+<img width="1052" height="593" alt="Screenshot 2025-11-27 102008" src="https://github.com/user-attachments/assets/9827b47c-cc49-4af7-aed8-35b64373c1d4" />
+<img width="1282" height="473" alt="Screenshot 2025-11-27 102054" src="https://github.com/user-attachments/assets/92e14ef6-7fad-43bf-aa03-8548314e028e" />
+<img width="1309" height="470" alt="Screenshot 2025-11-27 102142" src="https://github.com/user-attachments/assets/9d782b53-b24c-4872-93e7-92de89a59c6f" />
+<img width="1271" height="530" alt="Screenshot 2025-11-27 102356" src="https://github.com/user-attachments/assets/fd9af985-3828-4f59-9242-8e87b549db64" />
