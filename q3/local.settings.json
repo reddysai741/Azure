@@ -1,0 +1,16 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "AzureWebJobsSecretStorageType": "Files",
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    
+    "COSMOS_URL": "https://sainath3.documents.azure.com:443/",
+    "COSMOS_KEY": "JT3mpIFmvhirfd61pBfuSUCmilnc3ouy2GAoWmhhvxrr37xpTiTG36WB9t5YGYjMInjX7xvMxZ40ACDb47L1hw==",
+    "COSMOS_DB": "Documentsdb",
+    "COSMOS_CONTAINER": "Documents",
+
+    "BLOB_CONN_STR": "DefaultEndpointsProtocol=https;AccountName=saique3;AccountKey=xF057JTGrOseDPI6d+k0WFRqH9jf+xC9EtknpMNVKkHGlpqsjP2lpy7cTDbEahgqgciF/xVWy6EA+AStT2KCfA==;EndpointSuffix=core.windows.net"
+  }
+}

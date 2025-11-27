@@ -1,0 +1,16 @@
+[
+  {
+    "id": "12345",
+    "eventType": "Microsoft.Storage.BlobCreated",
+    "subject": "/blobServices/default/containers/documents/blobs/simple.txt",
+    "eventTime": "2025-11-27T12:00:00Z",
+    "data": {
+      "api": "PutBlob",
+      "url": "https://saique3.blob.core.windows.net/documents/simple.txt",
+      "contentType": "text/plain"
+    },
+    "dataVersion": "",
+    "metadataVersion": "1",
+    "topic": "/subscriptions/337f2b3a-68b6-4a2e-befd-01a13f20c1d0/resourceGroups/mazenet-databricks-01/providers/Microsoft.Storage/storageAccounts/saique3"
+  }
+]
